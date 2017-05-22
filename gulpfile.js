@@ -7,17 +7,18 @@ const PATH = {
         '.node_modules/bootstrap/dist/js/bootstrap.min.js'
     ],
     css_vendor: [
-        './node_modules/bootstrap/css/bootstrap.min.css',
-        './node_modules/bootstrap/css/bootstrap-theme.min.css',
+        './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        './node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
         './node_modules/font-awesome/css/font-awesome.min.css'
     ],
     fonts_vendor: [
-        './node_modules/bootstrap/fonts/**',
+        './node_modules/bootstrap/dist/fonts/**',
         './node_modules/font-awesome/fonts/**'
     ],
     DIST: './dist',
     static: [
-        './src/index.html'
+        './src/index.html',
+        './src/images/**'
     ]
 };
 
@@ -123,4 +124,4 @@ gulp.task('serve', function () {
 });
 
 // Initialization
-gulp.task('default', ['styles', 'js', 'js-vendor', 'fonts-vendor', 'copy', 'serve']);
+gulp.task('default', ['styles', 'js', 'js-vendor', 'css-vendor', 'fonts-vendor', 'copy', 'serve']);
