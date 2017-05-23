@@ -4,11 +4,11 @@ zalandoApp.config(['$routeProvider', '$locationProvider' , ($routeProvider, $loc
 
     $routeProvider
         .when('/products', {
-            templateUrl: '/src/html/products.html',
+            templateUrl: 'html/products.html',
             controller: 'zalandoController'
         })
-        .when('/product-detail', {
-            templateUrl: 'src/html/product-details.html',
+        .when('/product-detail/:productId', {
+            templateUrl: 'html/product-details.html',
             controller: 'zalandoController'
         })
         .otherwise({

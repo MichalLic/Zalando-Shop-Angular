@@ -5,7 +5,7 @@ const PATH = {
         './node_modules/jquery/dist/jquery.min.js',
         './node_modules/angular/angular.min.js',
         './node_modules/angular-route/angular-route.min.js',
-        '.node_modules/bootstrap/dist/js/bootstrap.min.js'
+        './node_modules/bootstrap/dist/js/bootstrap.min.js'
     ],
     css_vendor: [
         './node_modules/bootstrap/dist/css/bootstrap.min.css',
@@ -19,6 +19,7 @@ const PATH = {
     DIST: './dist',
     static: [
         './src/index.html',
+        './src/html/**',
         './src/images/**'
     ]
 };
@@ -102,7 +103,7 @@ gulp.task('copy', function () {
 gulp.task('serve', function () {
     browserSync.init({
         server: {
-            baseDir: "./",
+            baseDir: "./dist",
             notify: true
         }
     });
@@ -121,7 +122,7 @@ gulp.task('serve', function () {
 
     // add browserSync.reload to the tasks array to make
     // all browsers reload after tasks are complete.
-    gulp.watch('./*.html').on('change', browserSync.reload);
+    gulp.watch('./src/**/*.html').on('change', browserSync.reload);
 });
 
 // Initialization
