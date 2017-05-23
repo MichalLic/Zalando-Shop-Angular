@@ -1,4 +1,17 @@
 main {
   flex: 1;
   overflow: hidden;
+
+  .item {
+    text-align: center;
+
+    .item-img {
+      display: inline-block;
+      transition: .3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="zalandoApp">
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
@@ -18,8 +18,20 @@
         </div>
     </div>
 </header>
-<main>
-
+<main ng-controller="zalandoController">
+    <div class="container">
+        <div class="row">
+            <div ng-repeat="product in products.data.content" class="col-md-6 col-lg-4 col-xs-12 item">
+                <a href="#" class="item-img">
+                    <img src="{{product.media.images[0].smallHdUrl}}" alt="">
+                </a>
+                <h4 class="item-name">{{product.name}}</h4>
+                <p>{{product.units[0].price.formatted}}</p>
+            </div>
+        </div>
+        <!--<p>{{product.id}}</p>-->
+        <!--<img src="{{product.media.images[1].smallHdUrl}}"></img>-->
+    </div>
 </main>
 <footer>
     <div class="container">
