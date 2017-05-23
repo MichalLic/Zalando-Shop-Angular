@@ -8,7 +8,7 @@ app.factory('products', ['$http', ($http) => {
         error = error || function () {};
 
 
-        $http.get('https://api.zalando.com/articles/')
+        $http.get('https://shop-public-api.perimeter.zalan.do/articles')
             .then((data) => {
                 success(data);
             }, () => {

@@ -1,13 +1,16 @@
 main {
   flex: 1;
   overflow: hidden;
+  padding: 25px 0;
 
   .item {
     text-align: center;
+    padding: 10px 0;
 
     .item-img {
       display: inline-block;
       transition: .3s;
+      padding-bottom: 10px;
 
       &:hover {
         transform: scale(1.1);
