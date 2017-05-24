@@ -4,20 +4,23 @@ const PATH = {
     js_vendor: [
         './node_modules/jquery/dist/jquery.min.js',
         './node_modules/angular/angular.min.js',
-        '.node_modules/bootstrap/dist/js/bootstrap.min.js'
+        './node_modules/angular-route/angular-route.min.js',
+        './node_modules/bootstrap/dist/js/bootstrap.min.js'
     ],
     css_vendor: [
-        './node_modules/bootstrap/css/bootstrap.min.css',
-        './node_modules/bootstrap/css/bootstrap-theme.min.css',
+        './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        './node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
         './node_modules/font-awesome/css/font-awesome.min.css'
     ],
     fonts_vendor: [
-        './node_modules/bootstrap/fonts/**',
+        './node_modules/bootstrap/dist/fonts/**',
         './node_modules/font-awesome/fonts/**'
     ],
     DIST: './dist',
     static: [
-        './src/index.html'
+        './src/index.html',
+        './src/html/**',
+        './src/images/**'
     ]
 };
 
@@ -100,7 +103,7 @@ gulp.task('copy', function () {
 gulp.task('serve', function () {
     browserSync.init({
         server: {
-            baseDir: "./",
+            baseDir: "./dist",
             notify: true
         }
     });
@@ -119,8 +122,8 @@ gulp.task('serve', function () {
 
     // add browserSync.reload to the tasks array to make
     // all browsers reload after tasks are complete.
-    gulp.watch('./*.html').on('change', browserSync.reload);
+    gulp.watch('./src/**/*.html').on('change', browserSync.reload);
 });
 
 // Initialization
-gulp.task('default', ['styles', 'js', 'js-vendor', 'fonts-vendor', 'copy', 'serve']);
+gulp.task('default', ['styles', 'js', 'js-vendor', 'css-vendor', 'fonts-vendor', 'copy', 'serve']);
