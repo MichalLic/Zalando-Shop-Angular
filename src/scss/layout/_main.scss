@@ -39,5 +39,9 @@ main {
     display: flex;
     align-items: center;
   }
+}
 
+.filter-block{
+  padding: 20px 10px;
+  background-color: $color-grey-primary;
 }

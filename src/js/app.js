@@ -22,6 +22,7 @@ zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $loca
 zalandoApp.controller('zalandoController', ['$scope', 'products',($scope, products) => {
 
     $scope.produts = [];
+    $scope.filterBy = {};
 
     products.getProduct(function (data) {
         console.log(data);
