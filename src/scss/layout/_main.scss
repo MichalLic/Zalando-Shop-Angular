@@ -2,12 +2,13 @@ main {
   flex: 1;
   overflow: hidden;
   padding: 25px 0;
+}
 
-  .item {
+  .product-item {
     text-align: center;
     padding: 10px 0;
 
-    .item-img {
+    .product-img {
       display: inline-block;
       transition: .3s;
       padding-bottom: 10px;
@@ -17,4 +18,13 @@ main {
       }
     }
   }
-}
+  .item-details {
+
+    .size-block,
+    .price-block{
+      display: flex;
+      padding: 0 5px;
+    }
+
+
+  }

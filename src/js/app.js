@@ -39,6 +39,5 @@ zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', (
         (function (data) {
             $scope.productDetails = data;
             console.log(data);
-            console.log('jest')
         }))
 }]);

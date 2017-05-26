@@ -11,7 +11,6 @@ app.factory('products', ['$http', ($http) => {
         $http.get('https://shop-public-api.perimeter.zalan.do/articles/')
             .then((data) => {
                 success(data);
-                console.log(data)
             }, () => {
                 console.log('getting data error');
                 error();
@@ -26,7 +25,6 @@ app.factory('products', ['$http', ($http) => {
         $http.get('https://shop-public-api.perimeter.zalan.do/articles/' + productId)
             .then((data) => {
                 success(data);
-                console.log(data)
             }, () => {
                 console.log('getting data error');
                 error();
