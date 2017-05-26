@@ -18,13 +18,12 @@ app.factory('products', ['$http', ($http) => {
             });
     };
 
-    const getProductDetail = (success, error, productId) => {
+    const getProductDetail = (productId, success, error) => {
 
         success = success || function () {};
         error = error || function () {};
 
-
-        $http.get(`https://shop-public-api.perimeter.zalan.do/articles/${{productId}}`)
+        $http.get('https://shop-public-api.perimeter.zalan.do/articles/' + productId)
             .then((data) => {
                 success(data);
                 console.log(data)
@@ -33,8 +32,6 @@ app.factory('products', ['$http', ($http) => {
                 error();
             });
     };
-
-
 
     return {
         getProduct: getProduct,

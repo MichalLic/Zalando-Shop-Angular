@@ -1,31 +1,44 @@
 const zalandoApp = angular.module('zalandoApp', ['ngRoute', 'zalandoServices']);
 
-zalandoApp.config(['$routeProvider', '$locationProvider' , ($routeProvider, $locationProvider)=> {
+zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 
     $routeProvider
         .when('/products', {
             templateUrl: 'html/products.html',
             controller: 'zalandoController'
         })
-        .when('/product-detail/:productId', {
-            templateUrl: 'html/product-details.html',
-            controller: 'zalandoController'
+        .when('/details/:productId', {
+            templateUrl: 'html/details.html',
+            controller: 'productDetails'
         })
         .otherwise({
             redirectTo: '/products'
         });
 
-    $locationProvider.
-        html5Mode(true);
+    $locationProvider.html5Mode(true);
 }]);
 
 
-zalandoApp.controller('zalandoController', ['$scope', 'products', ($scope, products) => {
+zalandoApp.controller('zalandoController', ['$scope', 'products',($scope, products) => {
 
     $scope.produts = [];
 
     products.getProduct(function (data) {
+        console.log(data);
         $scope.products = data;
     });
 
+}]);
+
+zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', ($scope, products, $routeParams) => {
+
+    $scope.productDetails = [];
+
+    products.getProductDetail
+    ($routeParams.productId,
+        (function (data) {
+            $scope.productDetails = data;
+            console.log(data);
+            console.log('jest')
+        }))
 }]);
