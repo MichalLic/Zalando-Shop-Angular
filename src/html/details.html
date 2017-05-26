@@ -21,12 +21,12 @@
         <div class="item-details">
             <h2>{{productDetails.data.name}}</h2>
             <div class="size-block">
-                <p>Size: </p>
-                <p class="item-size" ng-repeat="product in productDetails.data.units">{{product.size}}</p>
+                <p class="name-hl">Size: </p>
+                <p class="details-field" ng-repeat="product in productDetails.data.units">{{product.size}}</p>
             </div>
             <div class="price-block">
-                <p>Price: </p>
-                <p class="price">{{productDetails.data.units[0].price.formatted}}</p>
+                <p class="name-hl">Price: </p>
+                <p class="details-field">{{productDetails.data.units[0].price.formatted}}</p>
             </div>
         </div>
 
