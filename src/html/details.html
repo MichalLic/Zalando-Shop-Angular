@@ -20,14 +20,23 @@
     <div class="col-md-6 col-xs-12">
         <div class="item-details">
             <h2>{{productDetails.data.name}}</h2>
-            <div class="size-block">
+            <div class="size-block attribute">
                 <p class="name-hl">Size: </p>
                 <p class="details-field" ng-repeat="product in productDetails.data.units">{{product.size}}</p>
             </div>
-            <div class="price-block">
+            <div class="price-block attribute">
                 <p class="name-hl">Price: </p>
                 <p class="details-field">{{productDetails.data.units[0].price.formatted}}</p>
             </div>
+            <div class="color-block attribute">
+                <p class="name-hl">Color:</p>
+                <p class="attribute-detail">{{productDetails.data.color}}</p>
+            </div>
+            <div class="season-block attribute">
+                <p class="name-hl">Season:</p>
+                <p class="attribute-detail">{{productDetails.data.season}}</p>
+            </div>
+            <button class="btn add-cart">Add to cart</button>
         </div>
 
     </div>
