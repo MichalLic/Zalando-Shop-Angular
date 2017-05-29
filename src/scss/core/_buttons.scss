@@ -1,9 +1,28 @@
-.add-cart {
+.btn-cart {
   background-color: $color-orange;
   transition: .3s;
   color: $color-grey-primary;
+
+  &.btn {
+    padding: 0;
+  }
+
+  &.btn-add {
+    padding: 5px 15px;
+  }
+  
+  a {
+    display: inline-block;
+  }
+
   &:hover {
     box-shadow: 0 0 10px $color-orange;
     color: $color-grey-primary;
   }
+
+  i {
+    color: $color-grey-primary;
+    padding: 10px 20px;
+  }
 }
+

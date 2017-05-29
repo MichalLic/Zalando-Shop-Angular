@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">{{$storage.productCart.name}}</div>
+            <div class="col-md-3">{{$storage.productCart.units[0].price.formatted}}</div>
+            <div class="col-md-3">
+                <img ng-src="{{$storage.productCart.media.images[0].smallUrl}}" alt="">
+            </div>
+            <div class="col-md-3">{{$storage.productCart.color}}</div>
+            <div class="col-md-3">{{$storage.productCart.key}}</div>
+        </div>
+    </div>
+</div>

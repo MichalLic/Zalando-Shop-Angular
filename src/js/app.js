@@ -1,4 +1,4 @@
-const zalandoApp = angular.module('zalandoApp', ['ngRoute', 'zalandoServices']);
+const zalandoApp = angular.module('zalandoApp', ['ngRoute', 'ngStorage', 'zalandoServices']);
 
 zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 
@@ -11,6 +11,10 @@ zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $loca
             templateUrl: 'html/details.html',
             controller: 'productDetails'
         })
+        .when('/cart', {
+            templateUrl: 'html/cart.html',
+            controller: 'storage'
+        })
         .otherwise({
             redirectTo: '/products'
         });
@@ -19,26 +23,34 @@ zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $loca
 }]);
 
 
-zalandoApp.controller('zalandoController', ['$scope', 'products',($scope, products) => {
+zalandoApp.controller('zalandoController', ['$scope', 'products', ($scope, products) => {
 
     $scope.produts = [];
     $scope.filterBy = {};
 
     products.getProduct(function (data) {
-        console.log(data);
         $scope.products = data;
     });
 
 }]);
 
-zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', ($scope, products, $routeParams) => {
+zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '$localStorage', ($scope, products, $routeParams, $localStorage) => {
 
     $scope.productDetails = [];
+    $scope.$storage = $localStorage;
 
     products.getProductDetail
     ($routeParams.productId,
         (function (data) {
             $scope.productDetails = data;
-            console.log(data);
-        }))
+            // console.log(data);
+            // console.log($scope.productDetails);
+        }));
+
+}]);
+
+zalandoApp.controller('storage', ['$scope', '$localStorage', ($scope, $localStorage)=>{
+    $scope.$storage = $localStorage;
+    console.log($scope.$storage.productCart);
+
 }]);
