@@ -23,14 +23,25 @@ zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $loca
 }]);
 
 
-zalandoApp.controller('zalandoController', ['$scope', 'products', ($scope, products) => {
+zalandoApp.controller('zalandoController', ['$scope', 'products', '$timeout', ($scope, products, $timeout) => {
 
     $scope.produts = [];
     $scope.filterBy = {};
+    $scope.showMess = false;
 
     products.getProduct(function (data) {
         $scope.products = data;
     });
+
+    $scope.showCartMessage = function () {
+        $scope.showMess = true;
+        $timeout(() => {
+            console.log('ajajajaja');
+            $scope.showMess = false;
+        }, 3000);
+    };
+
+
 
 }]);
 

@@ -1,4 +1,5 @@
-<div class="row">
+<div class="row relative details-container">
+    <div ng-show="showMess" class="cart-mess absolute alert alert-success">Your product was added to the cart!</div>
     <div class="col-md-6 col-xs-12">
         <div id="product-carousel" class="carousel slide">
             <div class="carousel-inner">
@@ -36,7 +37,9 @@
                 <p class="name-hl">Season:</p>
                 <p class="attribute-detail">{{productDetails.data.season}}</p>
             </div>
-            <button ng-click="$storage.productCart = productDetails.data" class="btn pull-right btn-lg btn-cart btn-add">Add to cart</button>
+            <button ng-click="$storage.productCart = productDetails.data; showCartMessage()"
+                    class="btn pull-right btn-lg btn-cart btn-add">Add to cart
+            </button>
         </div>
 
     </div>

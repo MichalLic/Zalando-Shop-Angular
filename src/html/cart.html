@@ -4,7 +4,7 @@
             <div class="col-md-3">{{$storage.productCart.name}}</div>
             <div class="col-md-3">{{$storage.productCart.units[0].price.formatted}}</div>
             <div class="col-md-3">
-                <img ng-src="{{$storage.productCart.media.images[0].smallUrl}}" alt="">
+                <a ng-href="/details/{{$storage.productCart.id}}"><img ng-src="{{$storage.productCart.media.images[0].smallUrl}}" alt=""></a>
             </div>
             <div class="col-md-3">{{$storage.productCart.color}}</div>
             <div class="col-md-3">{{$storage.productCart.key}}</div>

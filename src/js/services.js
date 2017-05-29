@@ -1,6 +1,6 @@
 const app = angular.module('zalandoServices', []);
 
-app.factory('products', ['$http', ($http) => {
+app.factory('products', ['$http', '$timeout', ($http, $timeout) => {
 
     const getProduct = (success, error) => {
 
@@ -41,7 +41,8 @@ app.factory('products', ['$http', ($http) => {
 
     return {
         getProduct: getProduct,
-        getProductDetail: getProductDetail
+        getProductDetail: getProductDetail,
     };
+
 
 }]);
