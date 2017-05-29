@@ -20,7 +20,7 @@
     <div class="col-md-6 col-xs-12">
         <div class="item-details">
             <h2>{{productDetails.data.name}}</h2>
-            <div class="size-block attribute">
+            <div class="size-block flex-wrap attribute">
                 <p class="name-hl">Size: </p>
                 <p class="details-field" ng-repeat="product in productDetails.data.units">{{product.size}}</p>
             </div>
@@ -36,7 +36,7 @@
                 <p class="name-hl">Season:</p>
                 <p class="attribute-detail">{{productDetails.data.season}}</p>
             </div>
-            <button class="btn add-cart">Add to cart</button>
+            <button class="btn pull-right btn-lg add-cart">Add to cart</button>
         </div>
 
     </div>
