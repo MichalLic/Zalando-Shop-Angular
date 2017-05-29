@@ -2,19 +2,56 @@ main {
   flex: 1;
   overflow: hidden;
   padding: 25px 0;
+}
 
-  .item {
-    text-align: center;
-    padding: 10px 0;
+.product-item {
+  text-align: center;
+  padding: 10px 0;
 
-    .item-img {
-      display: inline-block;
-      transition: .3s;
-      padding-bottom: 10px;
+  .product-img {
+    display: inline-block;
+    transition: .3s;
+    padding-bottom: 10px;
 
-      &:hover {
-        transform: scale(1.1);
-      }
+    &:hover {
+      transform: scale(1.1);
     }
   }
+}
+
+.item-details {
+  padding: 15px 0;
+
+  .attribute {
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+
+    .details-field {
+      background-color: $color-orange;
+      padding: 5px 12px;
+      border-radius: 12px;
+      margin: 0 5px 5px;
+      color: $color-black;
+    }
+
+    .name-hl {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .attribute-detail {
+      margin: 0;
+      padding: 0 10px;
+    }
+  }
+
+}
+
+.filter-block {
+  padding: 20px 10px;
+  background-color: $color-grey-primary;
 }

@@ -1,0 +1,9 @@
+.add-cart {
+  background-color: $color-orange;
+  transition: .3s;
+  color: $color-grey-primary;
+  &:hover {
+    box-shadow: 0 0 10px $color-orange;
+    color: $color-grey-primary;
+  }
+}

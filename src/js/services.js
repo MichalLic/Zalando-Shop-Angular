@@ -4,37 +4,40 @@ app.factory('products', ['$http', ($http) => {
 
     const getProduct = (success, error) => {
 
-        success = success || function () {};
-        error = error || function () {};
+        success = success || function () {
+            };
+        error = error || function () {
+            };
 
 
-        $http.get('https://shop-public-api.perimeter.zalan.do/articles/')
+        $http.get('https://shop-public-api.perimeter.zalan.do/articles/', {
+            headers: {'Accept-Language': 'en'}
+        })
             .then((data) => {
                 success(data);
-                console.log(data)
             }, () => {
                 console.log('getting data error');
                 error();
             });
     };
 
-    const getProductDetail = (success, error, productId) => {
+    const getProductDetail = (productId, success, error) => {
 
-        success = success || function () {};
-        error = error || function () {};
+        success = success || function () {
+            };
+        error = error || function () {
+            };
 
-
-        $http.get(`https://shop-public-api.perimeter.zalan.do/articles/${{productId}}`)
+        $http.get('https://shop-public-api.perimeter.zalan.do/articles/' + productId, {
+            headers: {'Accept-Language': 'en'}
+        })
             .then((data) => {
                 success(data);
-                console.log(data)
             }, () => {
                 console.log('getting data error');
                 error();
             });
     };
-
-
 
     return {
         getProduct: getProduct,

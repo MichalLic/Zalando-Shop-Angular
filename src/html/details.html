@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <div id="product-carousel" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img ng-src="{{productDetails.data.media.images[0].smallHdUrl}}" alt="">
+                </div>
+                <div class="item" ng-repeat="product in productDetails.data.media.images">
+                    <img ng-src="{{product.smallHdUrl}}" alt="">
+                </div>
+            </div>
+            <a class="left carousel-control" href="#product-carousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#product-carousel" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="item-details">
+            <h2>{{productDetails.data.name}}</h2>
+            <div class="size-block flex-wrap attribute">
+                <p class="name-hl">Size: </p>
+                <p class="details-field" ng-repeat="product in productDetails.data.units">{{product.size}}</p>
+            </div>
+            <div class="price-block attribute">
+                <p class="name-hl">Price: </p>
+                <p class="details-field">{{productDetails.data.units[0].price.formatted}}</p>
+            </div>
+            <div class="color-block attribute">
+                <p class="name-hl">Color:</p>
+                <p class="attribute-detail">{{productDetails.data.color}}</p>
+            </div>
+            <div class="season-block attribute">
+                <p class="name-hl">Season:</p>
+                <p class="attribute-detail">{{productDetails.data.season}}</p>
+            </div>
+            <button class="btn pull-right btn-lg add-cart">Add to cart</button>
+        </div>
+
+    </div>
+</div>
