@@ -36,13 +36,9 @@ zalandoApp.controller('zalandoController', ['$scope', 'products', '$timeout', ($
     $scope.showCartMessage = function () {
         $scope.showMess = true;
         $timeout(() => {
-            console.log('ajajajaja');
             $scope.showMess = false;
         }, 3000);
     };
-
-
-
 }]);
 
 zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '$localStorage', ($scope, products, $routeParams, $localStorage) => {
@@ -54,14 +50,10 @@ zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '
     ($routeParams.productId,
         (function (data) {
             $scope.productDetails = data;
-            // console.log(data);
-            // console.log($scope.productDetails);
+            console.log(data);
         }));
-
 }]);
 
-zalandoApp.controller('storage', ['$scope', '$localStorage', ($scope, $localStorage)=>{
+zalandoApp.controller('storage', ['$scope', '$localStorage', ($scope, $localStorage) => {
     $scope.$storage = $localStorage;
-    console.log($scope.$storage.productCart);
-
 }]);

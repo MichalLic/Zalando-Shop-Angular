@@ -63,10 +63,35 @@ main {
 
   &.ng-hide {
     right: -100%;
-    display: block!important;
+    display: block !important;
   }
 }
 
-.details-container{
+.details-container {
   padding: 60px 0;
+}
+
+.product-summary {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding-bottom: 50px;
+
+  .item-price {
+    font-weight: bold;
+  }
+
+  .item-img {
+
+    a {
+      display: inline-block;
+
+      img {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
 }

@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-3">{{$storage.productCart.name}}</div>
-            <div class="col-md-3">{{$storage.productCart.units[0].price.formatted}}</div>
-            <div class="col-md-3">
+        <div class="row product-summary">
+            <div class="col-xs-4 item-name">{{$storage.productCart.name}}</div>
+            <div class="col-xs-2 item-price">{{$storage.productCart.units[0].price.formatted}}</div>
+            <div class="col-xs-4 item-img">
                 <a ng-href="/details/{{$storage.productCart.id}}"><img ng-src="{{$storage.productCart.media.images[0].smallUrl}}" alt=""></a>
             </div>
-            <div class="col-md-3">{{$storage.productCart.color}}</div>
-            <div class="col-md-3">{{$storage.productCart.key}}</div>
+            <div class="col-xs-2 item-color">{{$storage.productCart.color}}</div>
         </div>
     </div>
+    <button class="btn btn-cart btn-buy">Buy</button>
 </div>
