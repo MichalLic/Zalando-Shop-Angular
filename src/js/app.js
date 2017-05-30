@@ -15,6 +15,10 @@ zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $loca
             templateUrl: 'html/cart.html',
             controller: 'storage'
         })
+        .when('/finalization', {
+            templateUrl: 'html/finalization.html',
+            controller: 'finalization'
+        })
         .otherwise({
             redirectTo: '/products'
         });
@@ -56,4 +60,8 @@ zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '
 
 zalandoApp.controller('storage', ['$scope', '$localStorage', ($scope, $localStorage) => {
     $scope.$storage = $localStorage;
+}]);
+
+zalandoApp.controller('finalization', ['$scope', ($scope)=>{
+    $scope.showClass = false;
 }]);

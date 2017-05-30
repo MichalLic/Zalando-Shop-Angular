@@ -26,9 +26,18 @@
   }
 
   &.btn-buy {
-    padding:  10px 35px;
     display: block;
     margin: 0 auto;
+
+    a {
+      color: $color-grey-primary;
+      padding: 10px 35px;
+
+      &:hover {
+        text-decoration: none;
+        color: $color-grey-dark;
+      }
+    }
   }
 }
 

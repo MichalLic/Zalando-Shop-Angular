@@ -1,0 +1,35 @@
+<form role="form" name="form" novalidate>
+    <div class="from-group" ng-class="{'has-error': showClass, 'has-feedback': showClass }">
+        <label for="uName">Name*</label>
+        <input type="text" class="form-control" id="uName" ng-model="user.name" ng-blur="showClass = true" name="uName" required="required" min="3" max="20">
+        <span ng-show="showClass" class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <div ng-show="form.uName.$touched || form.$submitted">
+            <span ng-show="form.uName.$error.required">Name is required!</span>
+            <!--<span ng-show="form.uName.$error.max">Enter less than 20 chars!</span>-->
+            <!--<span ng-show="form.uName.$error.min">Enter more than 3 chars!</span>-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="uEmail">Email*</label>
+        <input type="email" class="form-control" id="uEmail" ng-model="user.email" name="uEmail" required="required">
+        <div ng-show="form.uEmail.$touched || form.$submitted">
+            <span ng-show="form.uEmail.$error.required">Email is required</span>
+            <span ng-show="form.uEmail.$error.email">Enter email correctly</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="uPhone">Phone</label>
+        <input type="number" name="uPhone" class="form-control" id="uPhone" ng-model="user.phone" pattern="\d{3}-\d{3}-\d{3}">
+        <div ng-show="form.uPhone.$touched || form.$submitted">
+            <span ng-show="form.uPhone.$error.pattern">Phone number must has format 123-123-123</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="uData">I agree to transfer my data</label>
+        <input type="checkbox" id="uData" name="uData" ng-model="user.data" required="required">
+        <div ng-show="form.uData.$touched || form.uData.$submitted">
+            <span ng-show="form.uData.$error.required">This checkbox is required</span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-default">Send!</button>
+</form>
