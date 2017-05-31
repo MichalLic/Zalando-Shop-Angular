@@ -34,6 +34,12 @@
                 <p class="name-hl">Price: </p>
                 <p class="details-field">{{productDetails.data.units[0].price.formatted}}</p>
             </div>
+            <div class="attribute">
+                <label for="quantity" class="name-hl">Quantity: </label>
+                <select id="quantity">
+                    <option ng-repeat="quantity in optionsArray" value="{{quantity}}">{{quantity}}</option>
+                </select>
+            </div>
             <div class="color-block attribute">
                 <p class="name-hl">Color:</p>
                 <p class="attribute-detail">{{productDetails.data.color}}</p>

@@ -49,6 +49,7 @@ zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '
 
     $scope.productDetails = [];
     $scope.$storage = $localStorage;
+    $scope.optionsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     products.getProductDetail
     ($routeParams.productId,
@@ -62,12 +63,18 @@ zalandoApp.controller('storage', ['$scope', '$localStorage', ($scope, $localStor
     $scope.$storage = $localStorage;
 }]);
 
-zalandoApp.controller('finalization', ['$scope', '$timeout', '$window', ($scope, $timeout, $window) => {
+zalandoApp.controller('finalization', ['$scope', '$timeout', '$localStorage', '$window', ($scope, $timeout, $localStorage, $window) => {
 
-       $scope.submit = (form) => {
-           $timeout(() => {
-               console.log('Redirecting to /products');
-               // $window.location.href = '/products'
-           }, 4000)
-   }
+    $scope.present = false;
+
+    $scope.submit = (form) => {
+        $scope.present = true;
+        console.log($scope.present);
+        $timeout(() => {
+            console.log('Redirecting to /products');
+            // $window.location.href = '/products'
+            angular.element('.well').remove();
+            // $localStorage.reset();
+        }, 4000)
+    };
 }]);
