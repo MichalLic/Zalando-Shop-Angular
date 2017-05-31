@@ -6,13 +6,12 @@
         We have started preparing shipment!
         <div>
             {{user.name}}<br>
+            {{user.lastname}}<br>
             {{user.street}}<br>
-            {{user.zipcode}}<br>
-            {{user.city}} <br>
+            {{user.zipcode}} {{user.city}} <br>
         </div>
     </div>
 </div>
-
 <form role="form" name="form" class="shipping-form" novalidate ng-hide="form.$submitted && form.$valid">
     <div class="form-group"
          ng-class="{'has-error has-feedback': form.uName.$touched && form.uName.$invalid, 'has-success has-feedback': form.uName.$touched && form.uName.$valid}">
@@ -25,6 +24,20 @@
               class="glyphicon glyphicon-ok form-control-feedback"></span>
         <div ng-show="form.uName.$touched || form.$submitted">
             <span class="error-mess" ng-show="form.uName.$error.required">Name is required!</span>
+        </div>
+    </div>
+    <div class="form-group"
+         ng-class="{'has-error has-feedback': form.uName.$touched && form.uName.$invalid, 'has-success has-feedback': form.uName.$touched && form.uName.$valid}">
+        <label for="uLastName">Last name*</label>
+        <input type="text" class="form-control" id="uLastName" ng-model="user.lastname" name="uLastName"
+               required="required" min="3"
+               max="20">
+        <span ng-show="form.uLastName.$touched && form.uLastName.$invalid"
+              class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <span ng-show="form.uLastName.$touched && form.uLastName.$valid"
+              class="glyphicon glyphicon-ok form-control-feedback"></span>
+        <div ng-show="form.uLastName.$touched || form.$submitted">
+            <span class="error-mess" ng-show="form.uLastName.$error.required">Last name is required!</span>
         </div>
     </div>
     <div class="form-group"
@@ -103,5 +116,5 @@
             <span class="error-mess" ng-show="form.uData.$error.required">This checkbox is required!</span>
         </div>
     </div>
-    <button type="submit" ng-disabled="form.$invalid" class="btn btn-lg btn-default">Send!</button>
+    <button type="submit" class="btn btn-lg btn-default center-block">Send!</button>
 </form>

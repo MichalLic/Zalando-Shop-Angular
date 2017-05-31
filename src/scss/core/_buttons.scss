@@ -1,45 +1,39 @@
-.btn-cart {
+.btn-myPrimary {
   background-color: $color-orange;
   transition: .3s;
-  color: $color-grey-primary;
 
   &.btn {
     padding: 0;
   }
 
-  &.btn-add {
-    padding: 5px 15px;
-  }
-
   a {
+    padding: 10px 20px;
     display: inline-block;
+    color: $color-grey-primary;
   }
 
   &:hover {
     box-shadow: 0 0 10px $color-orange;
-    color: $color-grey-primary;
   }
 
   i {
     color: $color-grey-primary;
-    padding: 10px 20px;
-  }
-
-  &.btn-buy {
-    display: block;
-    margin: 0 auto;
-
-    a {
-      color: $color-grey-primary;
-      padding: 10px 35px;
-
-      &:hover {
-        text-decoration: none;
-        color: $color-grey-dark;
-      }
-    }
   }
 }
 
+.btn-add {
+  padding: 10px 20px !important;
+  color: $color-grey-primary;
+}
 
+.btn-buy {
+  a {
+    padding: 10px 35px;
+    transition: .3s;
 
+    &:hover {
+      text-decoration: none;
+      color: $color-grey-dark;
+    }
+  }
+}

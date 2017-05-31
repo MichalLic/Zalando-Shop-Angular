@@ -63,5 +63,5 @@ zalandoApp.controller('storage', ['$scope', '$localStorage', ($scope, $localStor
 }]);
 
 zalandoApp.controller('finalization', ['$scope', ($scope)=>{
-    $scope.showClass = false;
+
 }]);
