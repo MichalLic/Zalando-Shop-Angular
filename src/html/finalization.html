@@ -1,35 +1,107 @@
-<form role="form" name="form" novalidate>
-    <div class="from-group" ng-class="{'has-error': showClass, 'has-feedback': showClass }">
-        <label for="uName">Name*</label>
-        <input type="text" class="form-control" id="uName" ng-model="user.name" ng-blur="showClass = true" name="uName" required="required" min="3" max="20">
-        <span ng-show="showClass" class="glyphicon glyphicon-remove form-control-feedback"></span>
-        <div ng-show="form.uName.$touched || form.$submitted">
-            <span ng-show="form.uName.$error.required">Name is required!</span>
-            <!--<span ng-show="form.uName.$error.max">Enter less than 20 chars!</span>-->
-            <!--<span ng-show="form.uName.$error.min">Enter more than 3 chars!</span>-->
+<div class="well" ng-show="form.$submitted && form.$valid">
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Thank You for shopping!
+        <br><br>
+        We have started preparing shipment!
+        <div>
+            {{user.name}}<br>
+            {{user.street}}<br>
+            {{user.zipcode}}<br>
+            {{user.city}} <br>
         </div>
     </div>
-    <div class="form-group">
+</div>
+
+<form role="form" name="form" class="shipping-form" novalidate ng-hide="form.$submitted && form.$valid">
+    <div class="form-group"
+         ng-class="{'has-error has-feedback': form.uName.$touched && form.uName.$invalid, 'has-success has-feedback': form.uName.$touched && form.uName.$valid}">
+        <label for="uName">Name*</label>
+        <input type="text" class="form-control" id="uName" ng-model="user.name" name="uName" required="required" min="3"
+               max="20">
+        <span ng-show="form.uName.$touched && form.uName.$invalid"
+              class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <span ng-show="form.uName.$touched && form.uName.$valid"
+              class="glyphicon glyphicon-ok form-control-feedback"></span>
+        <div ng-show="form.uName.$touched || form.$submitted">
+            <span class="error-mess" ng-show="form.uName.$error.required">Name is required!</span>
+        </div>
+    </div>
+    <div class="form-group"
+         ng-class="{'has-error has-feedback': form.uEmail.$touched && form.uEmail.$invalid, 'has-success has-feedback': form.uEmail.$touched && form.uEmail.$valid}">
         <label for="uEmail">Email*</label>
         <input type="email" class="form-control" id="uEmail" ng-model="user.email" name="uEmail" required="required">
+        <span ng-show="form.uEmail.$touched && form.uEmail.$invalid"
+              class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <span ng-show="form.uEmail.$touched && form.uEmail.$valid"
+              class="glyphicon glyphicon-ok form-control-feedback"></span>
         <div ng-show="form.uEmail.$touched || form.$submitted">
-            <span ng-show="form.uEmail.$error.required">Email is required</span>
-            <span ng-show="form.uEmail.$error.email">Enter email correctly</span>
+            <span class="error-mess" ng-show="form.uEmail.$error.required">Email is required!</span>
+            <span class="error-mess" ng-show="form.uEmail.$error.email">Enter email correctly!</span>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group"
+         ng-class="{'has-error has-feedback': form.uPhone.$touched && form.uPhone.$invalid, 'has-success has-feedback': form.uPhone.$touched && form.uPhone.$valid}">
         <label for="uPhone">Phone</label>
-        <input type="number" name="uPhone" class="form-control" id="uPhone" ng-model="user.phone" pattern="\d{3}-\d{3}-\d{3}">
+        <input type="text" name="uPhone" class="form-control" id="uPhone" ng-model="user.phone"
+               pattern="\d{3}-\d{3}-\d{3}">
+        <span ng-show="form.uPhone.$touched && form.uPhone.$invalid"
+              class="glyphicon glyphicon-remove form-control-feedback"></span>
+        <span ng-show="form.uPhone.$touched && form.uPhone.$valid"
+              class="glyphicon glyphicon-ok form-control-feedback"></span>
         <div ng-show="form.uPhone.$touched || form.$submitted">
-            <span ng-show="form.uPhone.$error.pattern">Phone number must has format 123-123-123</span>
+            <span class="error-mess"
+                  ng-show="form.uPhone.$error.pattern">Phone number must has format 123-123-123!</span>
+        </div>
+    </div>
+    <div>
+        <div class="form-group col-md-6"
+             ng-class="{'has-error has-feedback': form.uStreet.$touched && form.uStreet.$invalid, 'has-success has-feedback': form.uStreet.$touched && form.uStreet.$valid}">
+            <label for="uStreet">Street*</label>
+            <input type="text" class="form-control" id="uStreet" name="uStreet" ng-model="user.street"
+                   required="required">
+            <span ng-show="form.uStreet.$touched && form.uStreet.$invalid"
+                  class="glyphicon glyphicon-remove form-control-feedback"></span>
+            <span ng-show="form.uStreet.$touched && form.uStreet.$valid"
+                  class="glyphicon glyphicon-ok form-control-feedback"></span>
+            <div ng-show="form.uStreet.$touched || form.$submitted">
+                <span class="error-mess" ng-show="form.uStreet.$error.required">Street is required!</span>
+            </div>
+        </div>
+        <div class="form-group col-md-5 col-md-offset-1"
+             ng-class="{'has-error has-feedback': form.uZipCode.$touched && form.uZipCode.$invalid, 'has-success has-feedback': form.uZipCode.$touched && form.uZipCode.$valid}">
+            <label for="uZipCode">Zip Code*</label>
+            <input type="text" class="form-control" id="uZipCode" name="uZipCode" ng-model="user.zipcode"
+                   required="required" pattern="\d{2}-\d{3}">
+            <span ng-show="form.uZipCode.$touched && form.uZipCode.$invalid"
+                  class="glyphicon glyphicon-remove form-control-feedback"></span>
+            <span ng-show="form.uZipCode.$touched && form.uZipCode.$valid"
+                  class="glyphicon glyphicon-ok form-control-feedback"></span>
+            <div ng-show="form.uZipCode.$touched || form.$submitted">
+                <span class="error-mess" ng-show="form.uZipCode.$error.required">Zip Code is required!</span>
+                <span class="error-mess" ng-show="form.uZipCode.$error.pattern">Zip Code must has format 00-123!</span>
+            </div>
+        </div>
+        <div class="form-group col-md-12"
+             ng-class="{'has-error has-feedback': form.uCity.$touched && form.uCity.$invalid, 'has-success has-feedback': form.uCity.$touched && form.uCity.$valid}">
+            <label for="uCity">City*</label>
+            <input type="text" class="form-control" id="uCity" name="uCity" ng-model="user.city" required="required">
+            <span ng-show="form.uCity.$touched && form.uCity.$invalid"
+                  class="glyphicon glyphicon-remove form-control-feedback"></span>
+            <span ng-show="form.uCity.$touched && form.uCity.$valid"
+                  class="glyphicon glyphicon-ok form-control-feedback"></span>
+            <div ng-show="form.uCity.$touched || form.$submitted">
+                <span class="error-mess" ng-show="form.uCity.$error.required">City is required!</span>
+            </div>
         </div>
     </div>
     <div class="form-group">
-        <label for="uData">I agree to transfer my data</label>
-        <input type="checkbox" id="uData" name="uData" ng-model="user.data" required="required">
-        <div ng-show="form.uData.$touched || form.uData.$submitted">
-            <span ng-show="form.uData.$error.required">This checkbox is required</span>
+        <label for="uData">I agree to transfer my data
+            <input type="checkbox" id="uData" name="uData" ng-model="user.data" required="required">
+        </label>
+        <div ng-show="form.uData.$touched || form.$submitted">
+            <span class="error-mess" ng-show="form.uData.$error.required">This checkbox is required!</span>
         </div>
     </div>
-    <button type="submit" class="btn btn-default">Send!</button>
+    <button type="submit" ng-disabled="form.$invalid" class="btn btn-lg btn-default">Send!</button>
 </form>
