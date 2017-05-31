@@ -1,3 +1,8 @@
+<div class="btn-back">
+    <a href="/products">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </a>
+</div>
 <div class="row relative details-container">
     <div ng-show="showMess" class="cart-mess absolute alert alert-success">Your product was added to the cart!</div>
     <div class="col-md-6 col-xs-12">
@@ -28,6 +33,12 @@
             <div class="price-block attribute">
                 <p class="name-hl">Price: </p>
                 <p class="details-field">{{productDetails.data.units[0].price.formatted}}</p>
+            </div>
+            <div class="attribute">
+                <label for="quantity" class="name-hl">Quantity: </label>
+                <select id="quantity">
+                    <option ng-repeat="quantity in optionsArray" value="{{quantity}}">{{quantity}}</option>
+                </select>
             </div>
             <div class="color-block attribute">
                 <p class="name-hl">Color:</p>
