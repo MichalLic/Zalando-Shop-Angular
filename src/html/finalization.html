@@ -1,3 +1,7 @@
+<div class="btn-back" ng-hide="form.$submitted && form.$valid">
+    <a href="/cart">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>    </a>
+</div>
 <div class="well" ng-show="form.$submitted && form.$valid">
     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -12,7 +16,7 @@
         </div>
     </div>
 </div>
-<form role="form" name="form" class="shipping-form" novalidate ng-hide="form.$submitted && form.$valid" ng-submit="redirect()">
+<form role="form" name="form" class="shipping-form" novalidate ng-hide="form.$submitted && form.$valid" ng-submit="form.$valid && submit(form)">
     <div class="form-group"
          ng-class="{'has-error has-feedback': form.uName.$touched && form.uName.$invalid, 'has-success has-feedback': form.uName.$touched && form.uName.$valid}">
         <label for="uName">Name*</label>
