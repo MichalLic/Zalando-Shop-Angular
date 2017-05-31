@@ -62,6 +62,12 @@ zalandoApp.controller('storage', ['$scope', '$localStorage', ($scope, $localStor
     $scope.$storage = $localStorage;
 }]);
 
-zalandoApp.controller('finalization', ['$scope', ($scope)=>{
+zalandoApp.controller('finalization', ['$scope', '$timeout', '$window', ($scope, $timeout, $window) => {
 
+       $scope.redirect = () => {
+           $timeout(() => {
+               console.log('Redirecting to /products');
+               // $window.location.href = '/products'
+           }, 4000)
+   }
 }]);

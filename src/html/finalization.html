@@ -12,12 +12,11 @@
         </div>
     </div>
 </div>
-<form role="form" name="form" class="shipping-form" novalidate ng-hide="form.$submitted && form.$valid">
+<form role="form" name="form" class="shipping-form" novalidate ng-hide="form.$submitted && form.$valid" ng-submit="redirect()">
     <div class="form-group"
          ng-class="{'has-error has-feedback': form.uName.$touched && form.uName.$invalid, 'has-success has-feedback': form.uName.$touched && form.uName.$valid}">
         <label for="uName">Name*</label>
-        <input type="text" class="form-control" id="uName" ng-model="user.name" name="uName" required="required" min="3"
-               max="20">
+        <input type="text" class="form-control" id="uName" ng-model="user.name" name="uName" required="required">
         <span ng-show="form.uName.$touched && form.uName.$invalid"
               class="glyphicon glyphicon-remove form-control-feedback"></span>
         <span ng-show="form.uName.$touched && form.uName.$valid"
@@ -27,11 +26,10 @@
         </div>
     </div>
     <div class="form-group"
-         ng-class="{'has-error has-feedback': form.uName.$touched && form.uName.$invalid, 'has-success has-feedback': form.uName.$touched && form.uName.$valid}">
+         ng-class="{'has-error has-feedback': form.uLastName.$touched && form.uLastName.$invalid, 'has-success has-feedback': form.uName.$touched && form.uName.$valid}">
         <label for="uLastName">Last name*</label>
         <input type="text" class="form-control" id="uLastName" ng-model="user.lastname" name="uLastName"
-               required="required" min="3"
-               max="20">
+               required="required">
         <span ng-show="form.uLastName.$touched && form.uLastName.$invalid"
               class="glyphicon glyphicon-remove form-control-feedback"></span>
         <span ng-show="form.uLastName.$touched && form.uLastName.$valid"
