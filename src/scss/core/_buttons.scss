@@ -1,9 +1,39 @@
-.add-cart {
+.btn-myPrimary {
   background-color: $color-orange;
   transition: .3s;
-  color: $color-grey-primary;
+
+  &.btn {
+    padding: 0;
+  }
+
+  a {
+    padding: 10px 20px;
+    display: inline-block;
+    color: $color-grey-primary;
+  }
+
   &:hover {
     box-shadow: 0 0 10px $color-orange;
+  }
+
+  i {
     color: $color-grey-primary;
+  }
+}
+
+.btn-add {
+  padding: 10px 20px !important;
+  color: $color-grey-primary;
+}
+
+.btn-buy {
+  a {
+    padding: 10px 35px;
+    transition: .3s;
+
+    &:hover {
+      text-decoration: none;
+      color: $color-grey-dark;
+    }
   }
 }

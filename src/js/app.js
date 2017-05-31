@@ -1,4 +1,4 @@
-const zalandoApp = angular.module('zalandoApp', ['ngRoute', 'zalandoServices']);
+const zalandoApp = angular.module('zalandoApp', ['ngRoute', 'ngStorage', 'zalandoServices']);
 
 zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
 
@@ -11,6 +11,14 @@ zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $loca
             templateUrl: 'html/details.html',
             controller: 'productDetails'
         })
+        .when('/cart', {
+            templateUrl: 'html/cart.html',
+            controller: 'storage'
+        })
+        .when('/finalization', {
+            templateUrl: 'html/finalization.html',
+            controller: 'finalization'
+        })
         .otherwise({
             redirectTo: '/products'
         });
@@ -19,26 +27,47 @@ zalandoApp.config(['$routeProvider', '$locationProvider', ($routeProvider, $loca
 }]);
 
 
-zalandoApp.controller('zalandoController', ['$scope', 'products',($scope, products) => {
+zalandoApp.controller('zalandoController', ['$scope', 'products', '$timeout', ($scope, products, $timeout) => {
 
     $scope.produts = [];
     $scope.filterBy = {};
+    $scope.showMess = false;
 
     products.getProduct(function (data) {
-        console.log(data);
         $scope.products = data;
     });
 
+    $scope.showCartMessage = function () {
+        $scope.showMess = true;
+        $timeout(() => {
+            $scope.showMess = false;
+        }, 3000);
+    };
 }]);
 
-zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', ($scope, products, $routeParams) => {
+zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '$localStorage', ($scope, products, $routeParams, $localStorage) => {
 
     $scope.productDetails = [];
+    $scope.$storage = $localStorage;
 
     products.getProductDetail
     ($routeParams.productId,
         (function (data) {
             $scope.productDetails = data;
             console.log(data);
-        }))
+        }));
+}]);
+
+zalandoApp.controller('storage', ['$scope', '$localStorage', ($scope, $localStorage) => {
+    $scope.$storage = $localStorage;
+}]);
+
+zalandoApp.controller('finalization', ['$scope', '$timeout', '$window', ($scope, $timeout, $window) => {
+
+       $scope.redirect = () => {
+           $timeout(() => {
+               console.log('Redirecting to /products');
+               // $window.location.href = '/products'
+           }, 4000)
+   }
 }]);

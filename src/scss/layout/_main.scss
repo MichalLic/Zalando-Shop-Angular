@@ -1,7 +1,6 @@
 main {
   flex: 1;
   overflow: hidden;
-  padding: 25px 0;
 }
 
 .product-item {
@@ -54,4 +53,43 @@ main {
 .filter-block {
   padding: 20px 10px;
   background-color: $color-grey-primary;
+}
+
+.cart-mess {
+  z-index: 1;
+  transition: 1s;
+  right: 0;
+  top: 4px;
+
+  &.ng-hide {
+    right: -100%;
+    display: block !important;
+  }
+}
+
+.details-container {
+  padding: 60px 0;
+}
+
+.product-summary {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding-bottom: 50px;
+
+  .item-price {
+    font-weight: bold;
+  }
+
+  .item-img {
+    a {
+      display: inline-block;
+
+      img {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
 }

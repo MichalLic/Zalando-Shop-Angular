@@ -5,7 +5,8 @@ const PATH = {
         './node_modules/jquery/dist/jquery.min.js',
         './node_modules/angular/angular.min.js',
         './node_modules/angular-route/angular-route.min.js',
-        './node_modules/bootstrap/dist/js/bootstrap.min.js'
+        './node_modules/bootstrap/dist/js/bootstrap.min.js',
+        './node_modules/ngstorage/ngStorage.min.js'
     ],
     css_vendor: [
         './node_modules/bootstrap/dist/css/bootstrap.min.css',
