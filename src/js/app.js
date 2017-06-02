@@ -57,44 +57,43 @@ zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '
 
     $scope.storageProducts = (key, value) => {
 
+        $scope.productQuantity = Number(angular.element('select').val());
+        console.log(`ilsoc produktu ` + $scope.productQuantity);
+
         $scope.product = {
             id: value.id,
             name: value.name,
             img: value.media.images[0].thumbnailHdUrl,
             color: value.color,
+            quantity: $scope.productQuantity,
             price: value.units[0].price.value,
             currency: '£',
-            quantity: 1
         };
 
-        $scope.myArray = '';
-        // $scope.productQuantity = angular.element('option').val();
-        // console.log(`ilsoc produktu ` + $scope.productQuantity);
-
         if (localStorageService.get('myProducts') === null) {
-            console.log('jest puste');
-            $scope.myArray = [];
-            $scope.myArray.push($scope.product);
-            localStorageService.set('myProducts', JSON.stringify($scope.myArray));
+            console.log('LocalStorage is empty');
+            $scope.LocalStorageProducts = [];
+            $scope.LocalStorageProducts.push($scope.product);
+            localStorageService.set('myProducts', JSON.stringify($scope.LocalStorageProducts));
 
         } else {
-            $scope.myArray = JSON.parse(localStorageService.get('myProducts'));
-            console.log($scope.myArray);
-            angular.forEach($scope.myArray, (value, key) => {
+            $scope.LocalStorageProducts = JSON.parse(localStorageService.get('myProducts'));
+            console.log($scope.LocalStorageProducts);
+            angular.forEach($scope.LocalStorageProducts, (value, key) => {
                 $scope.check = false;
                 if (value.id === $scope.product.id) {
-                    console.log('jest juz w koszyku taki gucio');
+                    console.log('Was here product at the same id');
+                    value.quantity += $scope.productQuantity;
                     $scope.check = true;
-                    // value.quantity += 1;
-                    // console.log(value);
+                    localStorageService.set('myProducts', JSON.stringify($scope.LocalStorageProducts));
                 }
             });
+
             if ($scope.check === false) {
-                console.log('dodam product do niepustego koszyka');
-                // console.log(JSON.parse(localStorageService.get(key)));
-                $scope.myArray = JSON.parse(localStorageService.get('myProducts')) || [];
-                $scope.myArray.push($scope.product);
-                localStorageService.set('myProducts', JSON.stringify($scope.myArray));
+                console.log('Added product to not empty LocalStorage');
+                $scope.LocalStorageProducts = JSON.parse(localStorageService.get('myProducts')) || [];
+                $scope.LocalStorageProducts.push($scope.product);
+                localStorageService.set('myProducts', JSON.stringify($scope.LocalStorageProducts));
             }
         }
     };

@@ -75,7 +75,21 @@ main {
   display: flex;
   align-items: center;
   flex: 1;
-  padding-bottom: 50px;
+  padding: 20px 0;
+  position: relative;
+
+  &:after{
+    content: '';
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    bottom: 0;
+    border-bottom: 1px solid $color-grey-medium;
+  }
+
+  &:last-of-type:after{
+    border: none;
+  }
 
   .item-price {
     font-weight: bold;
@@ -86,7 +100,7 @@ main {
       display: inline-block;
 
       img {
-        max-width: 100%;
+        max-width: 80%;
         display: block;
         margin: 0 auto;
       }
