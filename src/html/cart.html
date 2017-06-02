@@ -1,16 +1,18 @@
 <div class="btn-back">
     <a href="/products">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i>    </a>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
 </div>
 <div class="row">
     <div class="col-md-12">
-        <div class="row product-summary">
-            <div class="col-xs-4 item-name">{{$storage.productCart.name}}</div>
-            <div class="col-xs-2 item-price">{{$storage.productCart.units[0].price.formatted}}</div>
-            <div class="col-xs-4 item-img">
-                <a ng-href="/details/{{$storage.productCart.id}}"><img ng-src="{{$storage.productCart.media.images[0].smallUrl}}" alt=""></a>
+        <div class="row product-summary" ng-repeat="product in myStorageProducts">
+            <div class="col-md-12 col-xs-12">
+                <div class="col-xs-4 item-name">{{product.name}}</div>
+                <div class="col-xs-2 item-price">{{product.price}}</div>
+                <div class="col-xs-4 item-img">
+                    <a ng-href="/details/{{product.id}}"><img ng-src="{{product.img}}" alt=""></a>
+                </div>
+                <div class="col-xs-2 item-color">{{product.color}}</div>
             </div>
-            <div class="col-xs-2 item-color">{{$storage.productCart.color}}</div>
         </div>
     </div>
     <button class="btn btn-myPrimary btn-buy center-block"><a ng-href="/finalization">Buy</a></button>
