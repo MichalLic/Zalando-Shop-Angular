@@ -5,26 +5,29 @@
 <div class="row">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12 col-xs-12 product-summary" ng-repeat="product in myStorageProducts">
+            <div class="col-md-12 col-xs-12 product-summary" ng-repeat="(key, product) in myStorageProducts">
                 <div class="col-xs-4 item-name text-center">{{product.name}}</div>
                 <div class="col-xs-2 item-price text-center">{{product.price*product.quantity}} {{product.currency}}
                 </div>
-                <div class="col-xs-4 item-img text-center">
+                <div class="col-xs-3 item-img text-center">
                     <a ng-href="/details/{{product.id}}"><img ng-src="{{product.img}}" alt=""></a>
                 </div>
                 <div class="col-xs-2 item-quantity text-center">{{'QTY: ' + product.quantity}}</div>
+                <div class="col-xs-1 text-center">
+                    <button class="btn btn-danger btn-xs" ng-click="clearLocalStorageItem(key)"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+                </div>
             </div>
-            <div class="col-md-12 col-xs-12 total-block" ng-hide="emptyCart">
+            <div class="col-md-12 col-xs-12 total-block" ng-hide="emptyCart || myStorageProducts.length === 0">
                 <div class="col-md-6 col-xs-12 text-center">Total: {{totalProducts.price + ' £'}}</div>
                 <div class="col-md-6 col-xs-12 text-center">Quantity: {{totalProducts.quantity}}</div>
             </div>
         </div>
     </div>
     <div class="text-center">
-        <button class="btn btn-myPrimary btn-buy" ng-hide="emptyCart"><a ng-href="/finalization">Buy</a>
+        <button class="btn btn-myPrimary btn-buy" ng-hide="emptyCart || myStorageProducts.length === 0"><a ng-href="/finalization">Buy</a>
         </button>
-        <button class="btn btn-danger btn-clear-cart" ng-click="clearLocalStorage()" ng-hide="emptyCart">Clear cart
+        <button class="btn btn-danger btn-clear-cart" ng-click="clearLocalStorage()" ng-hide="emptyCart || myStorageProducts.length === 0">Clear cart
         </button>
     </div>
-    <h2 class="text-center" ng-show="emptyCart">Your cart is empty!</h2>
+    <h2 class="text-center" ng-show="emptyCart || myStorageProducts.length === 0">Your cart is empty!</h2>
 </div>

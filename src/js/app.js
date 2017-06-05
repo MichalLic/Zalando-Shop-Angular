@@ -134,6 +134,12 @@ zalandoApp.controller('finalization', ['$scope', '$timeout', '$window', 'localSt
         $scope.totalProducts.quantity += value.quantity;
     });
 
+    $scope.clearLocalStorageItem = (key) => {
+        $scope.myStorageProducts.splice(key, 1);
+        localStorageService.set('myProducts', JSON.stringify($scope.myStorageProducts));
+        console.log($scope.myStorageProducts)
+    };
+
     $scope.clearLocalStorage = () => {
         localStorageService.clearAll();
     }
