@@ -13,7 +13,7 @@ zalandoApp.config(['$routeProvider', '$locationProvider', 'localStorageServicePr
         })
         .when('/cart', {
             templateUrl: 'html/cart.html',
-            controller: 'storage'
+            controller: 'finalization'
         })
         .when('/finalization', {
             templateUrl: 'html/finalization.html',
@@ -58,8 +58,6 @@ zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '
     $scope.storageProducts = (key, value) => {
 
         $scope.productQuantity = Number(angular.element('select').val());
-        console.log(`ilsoc produktu ` + $scope.productQuantity);
-
         $scope.product = {
             id: value.id,
             name: value.name,
@@ -78,9 +76,8 @@ zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '
 
         } else {
             $scope.LocalStorageProducts = JSON.parse(localStorageService.get('myProducts'));
-            console.log($scope.LocalStorageProducts);
+            $scope.check = false;
             angular.forEach($scope.LocalStorageProducts, (value, key) => {
-                $scope.check = false;
                 if (value.id === $scope.product.id) {
                     console.log('Was here product at the same id');
                     value.quantity += $scope.productQuantity;
@@ -88,7 +85,6 @@ zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '
                     localStorageService.set('myProducts', JSON.stringify($scope.LocalStorageProducts));
                 }
             });
-
             if ($scope.check === false) {
                 console.log('Added product to not empty LocalStorage');
                 $scope.LocalStorageProducts = JSON.parse(localStorageService.get('myProducts')) || [];
@@ -102,28 +98,34 @@ zalandoApp.controller('productDetails', ['$scope', 'products', '$routeParams', '
     ($routeParams.productId,
         (function (data) {
             $scope.productDetails = data;
-            console.log(data);
+            // console.log(data);
         }));
 }]);
 
-zalandoApp.controller('storage', ['$scope', 'localStorageService', ($scope, localStorageService) => {
+zalandoApp.controller('finalization', ['$scope', '$timeout', '$window', 'localStorageService', ($scope, $timeout, $window, localStorageService) => {
 
     $scope.myStorageProducts = JSON.parse(localStorageService.get('myProducts'));
-    console.log($scope.myStorageProducts)
-
-}]);
-
-zalandoApp.controller('finalization', ['$scope', '$timeout', '$window', ($scope, $timeout, $window) => {
+    console.log($scope.myStorageProducts);
 
     $scope.present = false;
+    $scope.totalProducts = {
+        price: 0,
+        quantity: 0
+    };
 
     $scope.submit = (form) => {
         $scope.present = true;
         console.log($scope.present);
         $timeout(() => {
             console.log('Redirecting to /products');
+            localStorageService.clearAll();
             // $window.location.href = '/products'
             angular.element('.well').remove();
         }, 4000)
     };
+
+    angular.forEach($scope.myStorageProducts, (value) => {
+        $scope.totalProducts.price += (value.price * value.quantity);
+        $scope.totalProducts.quantity += value.quantity;
+    });
 }]);
