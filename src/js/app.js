@@ -108,10 +108,15 @@ zalandoApp.controller('finalization', ['$scope', '$timeout', '$window', 'localSt
     console.log($scope.myStorageProducts);
 
     $scope.present = false;
+    $scope.emptyCart = false;
     $scope.totalProducts = {
         price: 0,
         quantity: 0
     };
+
+    if ($scope.myStorageProducts === null) {
+        $scope.emptyCart = true;
+    }
 
     $scope.submit = (form) => {
         $scope.present = true;
@@ -128,4 +133,8 @@ zalandoApp.controller('finalization', ['$scope', '$timeout', '$window', 'localSt
         $scope.totalProducts.price += (value.price * value.quantity);
         $scope.totalProducts.quantity += value.quantity;
     });
+
+    $scope.clearLocalStorage = () => {
+        localStorageService.clearAll();
+    }
 }]);

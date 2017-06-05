@@ -7,17 +7,24 @@
         <div class="row">
             <div class="col-md-12 col-xs-12 product-summary" ng-repeat="product in myStorageProducts">
                 <div class="col-xs-4 item-name text-center">{{product.name}}</div>
-                <div class="col-xs-2 item-price text-center">{{product.price*product.quantity}} {{product.currency}}</div>
+                <div class="col-xs-2 item-price text-center">{{product.price*product.quantity}} {{product.currency}}
+                </div>
                 <div class="col-xs-4 item-img text-center">
                     <a ng-href="/details/{{product.id}}"><img ng-src="{{product.img}}" alt=""></a>
                 </div>
-                <div class="col-xs-2 item-quantity text-center">{{product.quantity}}</div>
+                <div class="col-xs-2 item-quantity text-center">{{'QTY: ' + product.quantity}}</div>
             </div>
-            <div class="col-md-12 col-xs-12 total-block">
-                <div class="col-md-6 col-xs-12 text-center">Total: {{totalProducts.price + ' £'}} </div>
-                <div class="col-md-6 col-xs-12 text-center">Quantity: {{totalProducts.quantity}} </div>
+            <div class="col-md-12 col-xs-12 total-block" ng-hide="emptyCart">
+                <div class="col-md-6 col-xs-12 text-center">Total: {{totalProducts.price + ' £'}}</div>
+                <div class="col-md-6 col-xs-12 text-center">Quantity: {{totalProducts.quantity}}</div>
             </div>
         </div>
     </div>
-    <button class="btn btn-myPrimary btn-buy center-block"><a ng-href="/finalization">Buy</a></button>
+    <div class="text-center">
+        <button class="btn btn-myPrimary btn-buy" ng-hide="emptyCart"><a ng-href="/finalization">Buy</a>
+        </button>
+        <button class="btn btn-danger btn-clear-cart" ng-click="clearLocalStorage()" ng-hide="emptyCart">Clear cart
+        </button>
+    </div>
+    <h2 class="text-center" ng-show="emptyCart">Your cart is empty!</h2>
 </div>
